@@ -8,6 +8,7 @@ import {
 import SIDENAV from "./sidenav";
 import { useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
+import ROUTES from "../../common/routes";
 
 const Sidebar = () => {
   const isSidebarShow = useSelector(sidebarStatus);
@@ -98,7 +99,7 @@ const Sidebar = () => {
         <div className="sidebar-header position-relative">
           <div className="d-flex justify-content-between align-items-center">
             <div className="logo">
-              <Link to="/">
+              <Link to={ROUTES.BASE}>
                 <img
                   src="https://res.cloudinary.com/dcwobtmhv/image/upload/v1661934762/logo_xbrhvw.svg"
                   alt="Logo"

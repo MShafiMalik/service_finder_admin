@@ -1,3 +1,4 @@
+import ROUTES from "../../common/routes";
 import Statistics from "./Statistics";
 
 const Dashboard = () => {
@@ -7,28 +8,28 @@ const Dashboard = () => {
       sum: 20,
       icon: "iconly-boldProfile",
       icon_color: "blue",
-      url: "/",
+      url: ROUTES.BASE,
     },
     {
       text: "Buyers",
       sum: 200,
       icon: "iconly-boldProfile",
       icon_color: "green",
-      url: "/",
+      url: ROUTES.BASE,
     },
     {
       text: "Services",
       sum: 60,
       icon: "iconly-boldWork",
       icon_color: "purple",
-      url: "/",
+      url: ROUTES.BASE,
     },
     {
       text: "Categories",
       sum: 10,
       icon: "iconly-boldCategory",
       icon_color: "red",
-      url: "/categories/view",
+      url: ROUTES.CATEGORY.BASE,
     },
   ];
 

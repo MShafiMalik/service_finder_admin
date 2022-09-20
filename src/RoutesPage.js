@@ -7,6 +7,7 @@ import Layout from "./modules/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { isAuthStatus, isMeAuth } from "./reducers/authSlice";
 import { me } from "./helpers/auth";
+import ROUTES from "./common/routes";
 
 const ErrorPage404 = lazy(() => import("./modules/errors/ErrorPage404"));
 const Login = lazy(() => import("./modules/auth/Login"));
@@ -17,7 +18,7 @@ const Profile = lazy(() => import("./modules/auth/Profile"));
 const ChangePassword = lazy(() => import("./modules/auth/ChangePassword"));
 
 const Dashboard = lazy(() => import("./pages/dashboard"));
-const ViewCategories = lazy(() => import("./pages/categories/ViewCategories"));
+const Categories = lazy(() => import("./pages/categories/"));
 const AddCategory = lazy(() => import("./pages/categories/AddCategory"));
 const EditCategory = lazy(() => import("./pages/categories/EditCategory"));
 
@@ -52,33 +53,43 @@ export default function RoutesPage() {
       <Suspense fallback={<SplashScreen />}>
         <Routes>
           <Route
-            path="/"
-            element={isAuth ? <Layout /> : <Navigate to="/login" />}
+            path={ROUTES.BASE}
+            element={isAuth ? <Layout /> : <Navigate to={ROUTES.AUTH.LOGIN} />}
           >
             <Route index element={<Dashboard />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="change-password" element={<ChangePassword />} />
-            <Route path="categories/view" element={<ViewCategories />} />
-            <Route path="category/add" element={<AddCategory />} />
-            <Route path="category/edit/:id" element={<EditCategory />} />
+            <Route path={ROUTES.AUTH.PROFILE} element={<Profile />} />
+            <Route
+              path={ROUTES.AUTH.CHANGE_PASSWORD}
+              element={<ChangePassword />}
+            />
+            <Route path={ROUTES.CATEGORY.BASE} element={<Categories />} />
+            <Route path={ROUTES.CATEGORY.ADD} element={<AddCategory />} />
+            <Route
+              path={ROUTES.CATEGORY.UPDATE.PARAM}
+              element={<EditCategory />}
+            />
           </Route>
           <Route
-            path="/login"
-            element={!isAuth ? <Login /> : <Navigate to="/" />}
+            path={ROUTES.AUTH.LOGIN}
+            element={!isAuth ? <Login /> : <Navigate to={ROUTES.BASE} />}
           />
           <Route
-            path="/forgot-password"
-            element={!isAuth ? <ForgotPassword /> : <Navigate to="/" />}
+            path={ROUTES.AUTH.FORGOT_PASSWORD}
+            element={
+              !isAuth ? <ForgotPassword /> : <Navigate to={ROUTES.BASE} />
+            }
           />
           <Route
-            path="/verify-otp/:id"
-            element={!isAuth ? <VerifyOtp /> : <Navigate to="/" />}
+            path={ROUTES.AUTH.VERIFY_OTP.PARAM}
+            element={!isAuth ? <VerifyOtp /> : <Navigate to={ROUTES.BASE} />}
           />
           <Route
-            path="/reset-password/:id"
-            element={!isAuth ? <ResetPassword /> : <Navigate to="/" />}
+            path={ROUTES.AUTH.RESET_PASSWORD.PARAM}
+            element={
+              !isAuth ? <ResetPassword /> : <Navigate to={ROUTES.BASE} />
+            }
           />
-          <Route path="*" element={<ErrorPage404 />} />
+          <Route path={ROUTES.ERROR} element={<ErrorPage404 />} />
         </Routes>
       </Suspense>
     );

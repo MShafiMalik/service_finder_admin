@@ -10,6 +10,7 @@ import {
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { logout, userDetail } from "../../reducers/authSlice";
+import ROUTES from "../../common/routes";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -60,12 +61,12 @@ const Header = () => {
         </button>
         <ul className="dropdown-menu dropdown-menu-end">
           <li>
-            <Link to="/profile" className="dropdown-item">
+            <Link to={ROUTES.AUTH.PROFILE} className="dropdown-item">
               Profile
             </Link>
           </li>
           <li>
-            <Link to="/change-password" className="dropdown-item">
+            <Link to={ROUTES.AUTH.CHANGE_PASSWORD} className="dropdown-item">
               Change Password
             </Link>
           </li>

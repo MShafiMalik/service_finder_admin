@@ -14,6 +14,7 @@ import {
   loginPending,
   loginSuccess,
 } from "../../reducers/authSlice";
+import ROUTES from "../../common/routes";
 
 const Login = () => {
   const yupValidation = Yup.object().shape({
@@ -123,7 +124,7 @@ const Login = () => {
         )}
       </form>
       <div className="text-center mt-4 fs-6">
-        <Link to="/forgot-password" className="app-link">
+        <Link to={ROUTES.AUTH.FORGOT_PASSWORD} className="app-link">
           Forgot password?
         </Link>
       </div>

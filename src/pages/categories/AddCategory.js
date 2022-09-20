@@ -4,7 +4,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { fetchApiCloudinary, fetchDataWithBody } from "../../helpers/FetchApi";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import ROUTES from "../../common/routes";
 
 const AddCategory = () => {
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ const AddCategory = () => {
       toast.success(response.message, {
         autoClose: 2000,
       });
-      navigate("/categories/view");
+      navigate(ROUTES.CATEGORY.BASE);
     } else {
       setLoading(false);
       toast.error(response.message, {
@@ -97,10 +98,16 @@ const AddCategory = () => {
           {image ? <img src={image} alt="Category" width="100%" /> : ""}
         </div>
         <div className="col-sm-12 d-flex justify-content-end">
+          <Link
+            to={ROUTES.CATEGORY.BASE}
+            className="btn me-1 mb-1 theme-btn-outline"
+          >
+            Back
+          </Link>
           {loading === true ? (
             <button
               type="submit"
-              className="btn btn-primary me-1 mb-1 theme-btn"
+              className="btn me-1 mb-1 theme-btn"
               disabled="disabled"
             >
               <span
@@ -111,10 +118,7 @@ const AddCategory = () => {
               Loading...
             </button>
           ) : (
-            <button
-              type="submit"
-              className="btn btn-primary me-1 mb-1 theme-btn"
-            >
+            <button type="submit" className="btn me-1 mb-1 theme-btn">
               Add
             </button>
           )}

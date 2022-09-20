@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { SERVER_BASE_URL } from "../../common/constants";
 import { fetchDataWithBody } from "../../helpers/FetchApi";
+import ROUTES from "../../common/routes";
 
 const ResetPassword = () => {
   const yupValidation = Yup.object().shape({
@@ -39,7 +40,7 @@ const ResetPassword = () => {
           toast.success(response.message, {
             autoClose: 2000,
           });
-          navigate(`/login`);
+          navigate(ROUTES.AUTH.LOGIN);
         } else {
           setLoading(false);
           toast.error(response.message, {
@@ -100,7 +101,7 @@ const ResetPassword = () => {
       <div className="text-center mt-4 fs-6">
         <p className="text-gray-600">
           Remember your account?
-          <Link to="/login" className="app-link ms-2">
+          <Link to={ROUTES.AUTH.LOGIN} className="app-link ms-2">
             Log in
           </Link>
         </p>

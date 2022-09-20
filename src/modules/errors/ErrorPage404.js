@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ROUTES from "../../common/routes";
 
 const ErrorPage404 = () => {
   return (
@@ -19,7 +20,7 @@ const ErrorPage404 = () => {
       />
       <h1 className="">NOT FOUND</h1>
       <p className="fs-5 text-gray-600">The page you are looking not found.</p>
-      <Link to="/" className="btn theme-btn-outline mt-3">
+      <Link to={ROUTES.BASE} className="btn theme-btn-outline mt-3">
         Go Home
       </Link>
     </div>

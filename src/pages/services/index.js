@@ -10,6 +10,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Edit from "@material-ui/icons/Edit";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ROUTES from "../../common/routes";
 
 const ViewCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -63,7 +64,7 @@ const ViewCategories = () => {
       name: <b>Action</b>,
       button: true,
       cell: (row) => (
-        <Link to={`/category/edit/${row._id}`}>
+        <Link to={`${ROUTES.CATEGORY.UPDATE.BASE}${row._id}`}>
           <IconButton color="primary">
             <Edit />
           </IconButton>

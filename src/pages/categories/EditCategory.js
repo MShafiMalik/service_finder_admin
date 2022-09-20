@@ -4,7 +4,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState, useEffect } from "react";
 import { fetchApiCloudinary, fetchDataWithBody } from "../../helpers/FetchApi";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import ROUTES from "../../common/routes";
 
 const EditCategory = () => {
   const navigate = useNavigate();
@@ -73,7 +74,7 @@ const EditCategory = () => {
       toast.success(response.message, {
         autoClose: 2000,
       });
-      navigate("/categories/view");
+      navigate(ROUTES.CATEGORY.BASE);
     } else {
       setLoading(false);
       toast.error(response.message, {
@@ -125,6 +126,12 @@ const EditCategory = () => {
           {image ? <img src={image} alt="Category" width="100%" /> : ""}
         </div>
         <div className="col-sm-12 d-flex justify-content-end">
+          <Link
+            to={ROUTES.CATEGORY.BASE}
+            className="btn me-1 mb-1 theme-btn-outline"
+          >
+            Back
+          </Link>
           {loading === true ? (
             <button
               type="submit"
@@ -143,7 +150,7 @@ const EditCategory = () => {
               type="submit"
               className="btn btn-primary me-1 mb-1 theme-btn"
             >
-              Edit
+              Update
             </button>
           )}
         </div>

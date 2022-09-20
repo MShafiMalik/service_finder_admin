@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { SERVER_BASE_URL } from "../../common/constants";
 import { fetchDataWithBody } from "../../helpers/FetchApi";
+import ROUTES from "../../common/routes";
 
 const VerifyOtp = () => {
   const [loading, setLoading] = useState(false);
@@ -33,7 +34,7 @@ const VerifyOtp = () => {
           toast.success(response.message, {
             autoClose: 2000,
           });
-          navigate(`/reset-password/${id}`);
+          navigate(`${ROUTES.AUTH.RESET_PASSWORD.BASE}/${id}`);
         } else {
           setLoading(false);
           toast.error(response.message, {
